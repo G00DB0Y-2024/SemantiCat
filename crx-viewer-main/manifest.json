@@ -1,0 +1,77 @@
+{
+  "manifest_version": 3,
+  "name": "SemantiCat",
+  "version": "0.0.1",
+  "description": "Reading PDF in the Chrome with Semantic translation!",
+  "icons": {
+    "128": "images/icon.png",
+    "48": "images/icon.png",
+    "16": "images/icon.png"
+  },
+  "permissions": [
+    "alarms",
+    "declarativeNetRequestWithHostAccess",
+    "webRequest",
+    "tabs",
+    "webNavigation",
+    "storage",
+	"clipboardWrite",   
+	"clipboardRead"   
+  ],
+  "host_permissions": ["<all_urls>"],
+  "action":{
+	  "default_popup": "settings/index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*", "file://*/*"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "css": ["contentstyle.css"],
+      "js": ["contentscript.js"]
+    },
+    {
+      "matches": ["http://*/*", "https://*/*", "file://*/*"],
+      "run_at": "document_start",
+      "all_frames": false,
+      "js": ["routerscript.js"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval' ; object-src 'self'"
+  },
+  "storage": {
+    "managed_schema": "preferences_schema.json"
+  },
+  "options_ui": {
+    "page": "options/options.html"
+  },
+  "options_page": "options/options.html",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "incognito": "split",
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "content/web/viewer.html",
+        "gptcore/*",
+        "gptcore/assets/*",
+        "pdfbar/*",
+        "pdfbar/assets/*",
+        "settings/*",
+        "settings/assets/*",
+        "http:/*",
+        "https:/*",
+        "file:/*",
+        "chrome-extension:/*",
+        "blob:*",
+        "data:*",
+        "filesystem:/*",
+        "drive:*"
+      ],
+      "matches": ["<all_urls>"],
+      "extension_ids": ["*"]
+    }
+  ]
+}
