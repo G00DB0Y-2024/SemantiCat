@@ -417,7 +417,7 @@ window.top.postMessage({type:'PDF_FP', fp:pdfDocument.fingerprints[0]}, '*')
 
 7. 条目中的任何元素都可以交互
 
-   鼠标防止在可交互元素上, 其底色会发生改变, 双击该元素, 会将内容复制
+   鼠标放置在可交互元素上, 其底色会发生改变, 双击该元素, 会将内容复制
 
    <img src="./assets/PixPin_2026-01-08_11-01-26_(0).png" alt="PixPin_2026-01-08_11-01-26_(0)" style="zoom:12%;" />
 
