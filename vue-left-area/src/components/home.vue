@@ -1380,7 +1380,8 @@ export default{
             content: `
 请结合上下文和之前的论文内容，将学术内容【${this.chosen_text}】${this.addedPrompt === '' ? '用中文准确概括' : this.addedPrompt}，要求如下：
 - 概括内容简短、简洁明了，突出重点，合理分段或者分点，无需额外说明，不要输出其它内容
-- 文中出现对于图片(fig x/figure x/Fig x/Figure x/...)、表格(table x...)、算法(algorithm x....)的引用, 输出结果中请替换为“如图x所示、如表x所示、如算法x所示” (x表示具体引用数字)
+- 文中出现对于图片(fig x/figure x/Fig x/Figure x/...)、表格(table x...)、算法(algorithm x....)的引用, 请在输出结果中请替换为“如图x所示、如表x所示、如算法x所示” (x表示具体引用数字)
+- 文中出现引用(例如[1], [2-3]这样的标记, 或是类似于Wright, 1920这样的), 请在输出结果中请表达为:[文献x](x表示引用数字), [文献Wright, 1920], 外面都要加方括号, 请不要省去文献两字"
 - 仅在确有必要时进行分条列点，避免分条过细；
 - 可以在较难或是较长的描述输出后, 利用markdown引用格式进行进一步的通俗理解或是解释
 - 对于重要的专业术语，中文翻译后markdown加粗并附全称, 例如：中文(缩写, 英文全称), 但此后再出现相同的专业术语就不要再附加全称了, 避免过长影响阅读
@@ -1489,7 +1490,7 @@ export default{
       // 第三步：将双斜杠 // 替换为空格
       processedText = processedText.replace(/\/\//g, ' ');
       // 第四步：删除文献标识符，如[1]、[2,3]、[4-6]等
-      processedText = processedText.replace(/\[\d+(?:,\s?\d+|-\d+)*\]/g, '');
+      //processedText = processedText.replace(/\[\d+(?:,\s?\d+|-\d+)*\]/g, '');
       // 可选：将多个连续空格替换为单个空格
       processedText = processedText.replace(/\s+/g, ' ').trim();
       return processedText;

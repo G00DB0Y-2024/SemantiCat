@@ -168,12 +168,15 @@ export default {
       content = this.normalizeLabels(content); //预先替换
 
       // 使用正则表达式匹配 "图 x"、"算法 x" 和 "表 x"
-      const regex = /图\s*(\d+)|算法\s*(\d+)|表\s*(\d+)/g;
+      const regex = /图\s*(\d+)|算法\s*(\d+)|表\s*(\d+)|\[文献[^\]]*\]/g;
 
       // 替换为指定的 HTML 代码
-      content = content.replace(regex, (match, p1, p2, p3) => {
-        const num = p1 || p2 || p3;
-        return `<span class="styled-figure" style="color: white; background-color: rgb(72, 112, 172); padding-inline: 3px; margin-inline: 2px; border-radius: 2px;">${match.trim().replace(/(\S)\s*(\d+)/, '\$1 \$2')}</span>`;
+      content = content.replace(regex, (match) => {
+        if (match.startsWith('[文献')) {
+          return `<span class="styled-reference" style="color: white; background-color: rgb(72, 112, 172); padding-inline: 3px; margin-inline: 2px; border-radius: 2px;">${match}</span>`;
+        } else {
+          return `<span class="styled-figure" style="color: white; background-color: rgb(72, 112, 172); padding-inline: 3px; margin-inline: 2px; border-radius: 2px;">${match.trim().replace(/(\S)\s*(\d+)/, '\$1 \$2')}</span>`;
+        }
       });
 
       // 更新容器的内容
