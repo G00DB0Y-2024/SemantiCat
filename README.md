@@ -60,7 +60,7 @@
 前端由三部分组成, 分别为:
 
 - 绿色: 由Vue3框架编写的侧边栏显示部分, 此为该应用的核心, 负责渲染AI输出, 提供交互输入
-- 蓝色: 由开源阅读器pdf.js修改形成的pdf阅读器部分, 此为阅读pdf, 捕捉各类pdf文件的核心
+- 蓝色: 由开源阅读器pdf.js[12]修改形成的pdf阅读器部分, 此为阅读pdf, 捕捉各类pdf文件的核心
 - 紫色: 由Vue3框架编写的阅读进度储存模块, 负责记录阅读和停留位置
 - 橙色: 由Vue3框架编写的AI接口设置界面, 从插件小图标呼出, 可自定义模型以及提示词
 
@@ -560,7 +560,7 @@ if(this.askContent.includes("@Clear")){
         })
 ```
 
-在问答框输入“@Clear”, 并Ctrl+Enter , 会出现提示删除记录
+**在问答框输入“@Clear”, 并Ctrl+Enter , 会出现提示删除记录**
 
 <img src="./assets/image-20260108113912826.png" alt="image-20260108113912826" style="zoom:50%;" />
 
@@ -699,3 +699,5 @@ Doc2X是一个很优秀的pdf转换器, 它能把pdf全文翻译并转为网页,
 [10] 沉浸式翻译 https://immersivetranslate.com/zh-Hans/
 
 [11] pdf.js捕获pdf文件解决方案 https://stackoverflow.com/questions/27770677/chrome-extension-how-to-show-custom-ui-for-a-pdf-file
+
+[12] pdf.js开源内容 https://mozilla.github.io/pdf.js/getting_started/
